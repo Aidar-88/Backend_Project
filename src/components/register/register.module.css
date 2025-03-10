@@ -1,0 +1,118 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Убираем прокрутку */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Делаем контейнер на всю высоту экрана */
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.form {
+  background: #fff; 
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.link {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 4px;
+  display: block;
+}
+.select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  appearance: none;
+}
+
+.select option:disabled {
+  color: gray;
+}
+
+
+
+
+
