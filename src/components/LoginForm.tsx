@@ -1,11 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.css"
-import { API_BASE_URL } from "../config";
 
-
-const LoginForm = ({onSwitch}: {onSwitch: () => void }) => {
+const LoginForm = ({ onSwitch }: { onSwitch: () => void }) => {
+    const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -13,32 +12,15 @@ const LoginForm = ({onSwitch}: {onSwitch: () => void }) => {
 
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    
         try {
-            const response = await axios.post(`${API_BASE_URL}/auth/login`, {
-                email,
-                password,
-            });
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("userName", response.data.name);
-            setEmail("");
-            setPassword("");
-            navigate("/home");
-
-        } catch (err: unknown) {
-            if (axios.isAxiosError(err)) {
-                console.error("Error", err.response?.data || err.message);
-                    setError(err.response?.data?.message || err.message || "Error in entry")
-            }
-            else {
-                console.error("unknown error", err);
-                setError("Unknown error in server");
-            }
+            await login(email, password);
+            navigate("/home")         
+        } catch (err) {
+            setError("Invalid credentials. Try again!");
         }
     };
 
-    return (
-            
+    return (   
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
             <h2 className={styles.title}>Login</h2>

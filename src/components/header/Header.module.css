@@ -1,0 +1,152 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #000;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  order: 2;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  gap: 0.5rem;
+  max-width: 450px;
+  width: 100%;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.searchIcon {
+  color: #666;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  order: 3;
+}
+
+.icon {
+  color: #444;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #000;
+}
+
+.username {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.logoutBtn {
+  background-color: #000;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background-color: #222;
+  transform: scale(1.05);
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .center {
+    order: 3;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}

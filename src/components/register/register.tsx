@@ -1,11 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
 import styles from "./register.module.css"
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../../config";
+import { useAuth } from "../../context/AuthContext";
 
 const Register = ({onSwitch}: { onSwitch: ()=> void }) => {
 
+    const { register } = useAuth();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -14,30 +14,29 @@ const Register = ({onSwitch}: { onSwitch: ()=> void }) => {
     })
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({
-            ...formData,
+        setFormData((prev) => ({
+            ...prev,
             [e.target.name]: e.target.value,
-        });
+        }));
     };
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
+        setMessage("");
+
+        console.log("Register", formData);
         try {
-            console.log("Sending request:",  formData )
-            await axios.post(`${API_BASE_URL}/auth/register`,
-                formData
-            );
-            setFormData({name: "", email: "", password: "", role: ""});
-            navigate("/login");
-        } catch (err: unknown) {
-            if (axios.isAxiosError(err)) {
-                setMessage(err.response?.data?.message || err.message || "Registration failed, please try again!");
-            }
-            else {
-                setMessage("Unknown error occurred.")
-            }
+            await register(formData.name, formData.email, formData.password, formData.role);
+            navigate("/home")
+        } catch (err) {
+            console.error("Registration failed", err)
+            setMessage("Registration failed, please try again!")
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -73,6 +72,7 @@ const Register = ({onSwitch}: { onSwitch: ()=> void }) => {
                     onChange={handleChange}
                     required
                     className={styles.input}
+                    autoComplete="current-password"
                 />
                 <select
                     name="role"
@@ -84,8 +84,8 @@ const Register = ({onSwitch}: { onSwitch: ()=> void }) => {
                     <option value="consumer">Consumer</option>
                     <option value="seller">Seller</option>
                 </select>
-                <button type="submit" className={styles.button}>
-                    Sign up
+                <button type="submit" className={styles.button} disabled={loading}>
+                    { loading ? "Signing up..." : "Sign Up" }
                 </button>
                 {message && <p className={styles.error}>{message}</p>}
                 <div>
