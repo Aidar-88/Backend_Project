@@ -1,152 +1,218 @@
 .header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: white;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  flex-wrap: wrap;
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111;
+  color: #1a1a1a;
   text-decoration: none;
-}
-
-.nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.link {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  letter-spacing: -0.02em;
   transition: color 0.2s ease;
 }
 
-.link:hover {
-  color: #000;
+.logo:hover {
+  color: #000000;
 }
 
 .center {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  order: 2;
+  max-width: 600px;
+  margin: 0 2rem;
 }
 
 .search {
-  display: flex;
-  align-items: center;
-  background-color: #f3f3f3;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  gap: 0.5rem;
-  max-width: 450px;
-  width: 100%;
+  position: relative;
 }
 
 .searchInput {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 0.95rem;
   width: 100%;
+  padding: 0.75rem 1rem;
+  padding-left: 2.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #000000;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
 }
 
 .searchIcon {
-  color: #666;
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 1rem;
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  order: 3;
+  gap: 1rem;
 }
 
 .icon {
-  color: #444;
-  font-size: 1.2rem;
+  color: #4b5563;
+  font-size: 1.25rem;
   transition: color 0.2s ease;
 }
 
 .icon:hover {
-  color: #000;
+  color: #000000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.link {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #000000;
 }
 
 .username {
-  font-size: 0.95rem;
-  color: #444;
+  color: #4b5563;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .logoutBtn {
-  background-color: #000;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
+  background: none;
   border: none;
+  padding: 0.5rem;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  color: #4b5563;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .logoutBtn:hover {
-  background-color: #222;
-  transform: scale(1.05);
+  color: #ef4444;
 }
 
 .burger {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  padding: 0.5rem;
   cursor: pointer;
-  color: #333;
+  color: #4b5563;
+  transition: color 0.2s ease;
+}
+
+.burger:hover {
+  color: #000000;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0.75rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .search {
+    max-width: none;
+  }
+
   .nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    z-index: 999;
-  }
-
-  .nav.open {
-    display: flex;
-  }
-
-  .center {
-    order: 3;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  .right {
     display: none;
   }
 
   .burger {
     display: block;
   }
+
+  .nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 1rem;
+  }
+
+  .link {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .link:hover {
+    background: #f8fafc;
+  }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.125rem;
+  }
+
+  .searchInput {
+    padding: 0.625rem 0.75rem;
+    padding-left: 2.25rem;
+    font-size: 0.8125rem;
+  }
+
+  .searchIcon {
+    font-size: 0.875rem;
+  }
+} 

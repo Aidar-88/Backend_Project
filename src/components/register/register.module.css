@@ -1,14 +1,14 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden; /* Убираем прокрутку */
+  overflow: hidden;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Делаем контейнер на всю высоту экрана */
+  height: 100vh; 
   background-color: #f8f8f8;
   padding: 20px;
 }
