@@ -7,11 +7,11 @@ import FavoritesPage from "./pages/FavoritesPage";
 import CartPage from "./pages/CartPage";
 // import { useAuth } from "./context/AuthContext";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { ReactElement } from "react";
+// import { ReactElement } from "react";
 
-interface PrivateRouteProps {
-    children: ReactElement;
-}
+// interface PrivateRouteProps {
+//     children: ReactElement;
+// }
 
 // Временно отключаем проверку авторизации
 // const PrivateRoute = ({ children }: PrivateRouteProps) => {
